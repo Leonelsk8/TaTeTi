@@ -1,0 +1,43 @@
+.grilla button{
+  width: 4em;
+  height: 4em;
+}
+
+.grilla{
+  background-color: rgba(128, 128, 128, 0.541);
+  border-radius: 10px;
+  width: max-content;
+  padding: 2em;
+}
+
+.selectTwo{
+  border-left: 2px solid black;
+  border-right: 2px solid rgb(0, 0, 0);
+}
+
+.selectFor{
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
+}
+
+.selectFive{
+  border: 2px solid black;
+}
+
+.selectSix{
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
+}
+
+.selectHeight{
+  border-left: 2px solid black;
+  border-right: 2px solid black;
+}
+
+.elementHover{
+  opacity: 0%;
+}
+
+.grilla button:hover .elementHover{
+  opacity: 40%;
+}

@@ -1,0 +1,28 @@
+.divElement{
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Element img{
+  width: 60%;
+  height: 60%;
+}
+
+.Element{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.animateElement{
+  animation: drawingElement 0.2s linear;
+}
+
+@keyframes drawingElement {
+  0%{transform: scale(30%);}
+  100%{transform: scale(100%);}
+}
