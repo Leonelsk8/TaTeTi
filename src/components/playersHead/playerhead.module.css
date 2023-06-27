@@ -1,0 +1,22 @@
+.character{
+  width: 5em;
+  height: 5em;
+  border-radius: 10px;
+  background-color: rgba(128, 128, 128, 0.562);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.3em;
+}
+
+.character img{
+  width: 100%;
+  height: auto;
+}
+
+.headAbsolute{
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+}

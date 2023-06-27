@@ -6,13 +6,13 @@
   position: relative;
   overflow-x: hidden;
   width: 100%;
-  height: 100%;
+  height: 100vh;
 }
 
 .bodyAbsolute{
   position: absolute;
   width: 110%;
-  height: 100%;
+  height: 120%;
   top: -10%;
   left: -5%;
   background: linear-gradient(to right, #ededed 0%, #ededed 50%, #000000 50%, #000 100%);
@@ -130,4 +130,11 @@
 
 .buttonStart:hover{
   background-color: rgba(0, 0, 0, 0.829);
+}
+
+.absoluteTop{
+  position: absolute;
+  top: 5%;
+  left: 0;
+  width: 100%;
 }
