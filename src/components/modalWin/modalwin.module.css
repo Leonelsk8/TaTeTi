@@ -1,0 +1,48 @@
+.modalWin{
+  background-color: rgba(80, 80, 80, 0.849);
+  border: 4px solid;
+  border-image: linear-gradient(#ffffff, #000000)1;
+  padding: 1em 2em 2em 2em;
+  animation: animateBorder 2.5s linear infinite;
+}
+
+@keyframes animateBorder {
+  50%{
+    border-image: linear-gradient(720deg, #ffffff, #000000)1;
+  }
+}
+
+.character{
+  width: 9em;
+  height: 9em;
+  display: flex;
+  justify-content: center;
+}
+
+.character img{
+  width: auto;
+  height: 100%;
+  border: none;
+}
+
+.bodyCharacter{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modalWin button{
+  border-radius: 10px;
+  padding: 0.6em;
+  background-color: #00000062;
+  transition: 0.3s;
+}
+
+.modalWin button:hover{
+  background-color: #ffffff4f;
+}
+
+.contWin{
+  border-right: 2px solid #fff;
+}

@@ -41,3 +41,7 @@
 .grilla button:hover .elementHover{
   opacity: 40%;
 }
+
+.mark{
+  background-color: #ffffff88;
+}

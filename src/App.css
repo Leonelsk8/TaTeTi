@@ -132,9 +132,16 @@
   background-color: rgba(0, 0, 0, 0.829);
 }
 
-.absoluteTop{
+.absoluteTopEdit{
   position: absolute;
   top: 5%;
+  left: 0;
+  width: 100%;
+}
+
+.absoluteTopWin{
+  position: absolute;
+  top: 25%;
   left: 0;
   width: 100%;
 }

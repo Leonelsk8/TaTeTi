@@ -1,10 +1,11 @@
 import style from './modal.module.css';
-import {useState,useEffect} from 'react';
+import {useState} from 'react';
 import char1 from '../../assets/characters/Char 1/icon.png';
 import char2 from '../../assets/characters/Char 2/icon.png';
 import char3 from '../../assets/characters/Char 3/icon.png';
 import char4 from '../../assets/characters/Char 4/icon.png';
 import char5 from '../../assets/characters/Char 5/icon.png';
+import charDefault from '../../assets/person-fill.svg';
 import char1Hover from '../../assets/characters/Char 1/characterHover.gif';
 import char2Hover from '../../assets/characters/Char 2/characterHover.gif';
 import char3Hover from '../../assets/characters/Char 3/characterHover.gif';
@@ -96,6 +97,7 @@ const ModalEditPlayer = (props) => {
               <div className={style.hoverChar}>
                 <div className={style.luzHov}></div>
                 {
+                  click===0? <img src={charDefault}></img> :
                   click===1? <img src={char1Hover}></img> : 
                   click===2? <img src={char2Hover}></img> : 
                   click===3? <img src={char3Hover}></img> : 
