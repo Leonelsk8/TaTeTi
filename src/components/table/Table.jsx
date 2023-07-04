@@ -1,10 +1,11 @@
-import {useState, useEffect} from 'react';
+import {useState, useEffect, useContext, useRef} from 'react';
+import MyContext from '../../MyContext';
 import ElementO from '../elements/ElementO';
 import ElementX from '../elements/ElementX';
 import style from './table.module.css';
 
-const Table = (props) => {
-  const {setPlayer, player, setRandomTurn, setWin, newGame, start, setnewGame} = props;
+const Table = () => {
+  const {setPlayer, player, setRandomTurn, setWin, newGame, start, setnewGame} = useContext(MyContext);
   const [select1, setSelect1] = useState(false);
   const [select2, setSelect2] = useState(false);
   const [select3, setSelect3] = useState(false);
@@ -16,6 +17,16 @@ const Table = (props) => {
   const [select9, setSelect9] = useState(false);
   const [markResult, setMarkResult] = useState(null);
   const [disabledEnd, setDisabledEnd]= useState(false);
+  const [selectedButton, setSelectedButton] = useState(false);
+  const button1Ref = useRef(null);
+  const button2Ref = useRef(null);
+  const button3Ref = useRef(null);
+  const button4Ref = useRef(null);
+  const button5Ref = useRef(null);
+  const button6Ref = useRef(null);
+  const button7Ref = useRef(null);
+  const button8Ref = useRef(null);
+  const button9Ref = useRef(null);
 
   useEffect(()=>{
     if(newGame || !start){
@@ -81,14 +92,202 @@ const Table = (props) => {
 
     if(turn && start){
       setRandomTurn('');
-      player === 1 ? setPlayer(2) : setPlayer(1)
+      player === 1 ? setPlayer(2) : setPlayer(1);
+      setSelectedButton(false);
     };
   }, [select1,select2,select3,select4,select5,select6,select7,select8,select9]);
+
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (event.key.startsWith('Arrow')) {
+        event.preventDefault();
+      }
+      switch (event.key.toLowerCase()) {
+        case player===2?'arrowup':'w':
+          if (!selectedButton) {
+            !button1Ref.current.disabled ? button1Ref.current.focus() :
+            !button2Ref.current.disabled ? button2Ref.current.focus() :
+            !button3Ref.current.disabled ? button3Ref.current.focus() :
+            !button4Ref.current.disabled ? button4Ref.current.focus() :
+            !button5Ref.current.disabled ? button5Ref.current.focus() :
+            !button6Ref.current.disabled ? button6Ref.current.focus() :
+            !button7Ref.current.disabled ? button7Ref.current.focus() :
+            !button8Ref.current.disabled ? button8Ref.current.focus() :
+            !button9Ref.current.disabled ? button9Ref.current.focus() : ''
+            setSelectedButton(true);
+          } else if (button1Ref.current === document.activeElement) {
+            !button7Ref.current.disabled ? button7Ref.current.focus() :
+            !button4Ref.current.disabled ? button4Ref.current.focus() : ''
+          } else if (button2Ref.current === document.activeElement) {
+            !button8Ref.current.disabled ? button8Ref.current.focus() :
+            !button5Ref.current.disabled ? button5Ref.current.focus() : ''
+          } else if (button3Ref.current === document.activeElement) {
+            !button9Ref.current.disabled ? button9Ref.current.focus() :
+            !button6Ref.current.disabled ? button6Ref.current.focus() : ''
+          } else if (button4Ref.current === document.activeElement) {
+            !button1Ref.current.disabled ? button1Ref.current.focus() :
+            !button7Ref.current.disabled ? button7Ref.current.focus() : ''
+          } else if (button5Ref.current === document.activeElement) {
+            !button2Ref.current.disabled ? button2Ref.current.focus() :
+            !button8Ref.current.disabled ? button8Ref.current.focus() : ''
+          } else if (button6Ref.current === document.activeElement) {
+            !button3Ref.current.disabled ? button3Ref.current.focus() :
+            !button9Ref.current.disabled ? button9Ref.current.focus() : ''
+          } else if (button7Ref.current === document.activeElement) {
+            !button4Ref.current.disabled ? button4Ref.current.focus() :
+            !button1Ref.current.disabled ? button1Ref.current.focus() : ''
+          } else if (button8Ref.current === document.activeElement) {
+            !button5Ref.current.disabled ? button5Ref.current.focus() :
+            !button2Ref.current.disabled ? button2Ref.current.focus() : ''
+          } else if (button9Ref.current === document.activeElement) {
+            !button6Ref.current.disabled ? button6Ref.current.focus() :
+            !button3Ref.current.disabled ? button3Ref.current.focus() : ''
+          }
+          break;
+        case player===2?'arrowdown':'s':
+          if (!selectedButton) {
+            !button1Ref.current.disabled ? button1Ref.current.focus() :
+            !button2Ref.current.disabled ? button2Ref.current.focus() :
+            !button3Ref.current.disabled ? button3Ref.current.focus() :
+            !button4Ref.current.disabled ? button4Ref.current.focus() :
+            !button5Ref.current.disabled ? button5Ref.current.focus() :
+            !button6Ref.current.disabled ? button6Ref.current.focus() :
+            !button7Ref.current.disabled ? button7Ref.current.focus() :
+            !button8Ref.current.disabled ? button8Ref.current.focus() :
+            !button9Ref.current.disabled ? button9Ref.current.focus() : ''
+            setSelectedButton(true);
+          } else if (button1Ref.current === document.activeElement) {
+            !button4Ref.current.disabled ? button4Ref.current.focus() :
+            !button7Ref.current.disabled ? button7Ref.current.focus() : ''
+          } else if (button2Ref.current === document.activeElement) {
+            !button5Ref.current.disabled ? button5Ref.current.focus() :
+            !button8Ref.current.disabled ? button8Ref.current.focus() : ''
+          } else if (button3Ref.current === document.activeElement) {
+            !button6Ref.current.disabled ? button6Ref.current.focus() :
+            !button9Ref.current.disabled ? button9Ref.current.focus() : ''
+          } else if (button4Ref.current === document.activeElement) {
+            !button7Ref.current.disabled ? button7Ref.current.focus() :
+            !button1Ref.current.disabled ? button1Ref.current.focus() : ''
+          } else if (button5Ref.current === document.activeElement) {
+            !button8Ref.current.disabled ? button8Ref.current.focus() :
+            !button2Ref.current.disabled ? button2Ref.current.focus() : ''
+          } else if (button6Ref.current === document.activeElement) {
+            !button9Ref.current.disabled ? button9Ref.current.focus() :
+            !button3Ref.current.disabled ? button3Ref.current.focus() : ''
+          } else if (button7Ref.current === document.activeElement) {
+            !button1Ref.current.disabled ? button1Ref.current.focus() :
+            !button4Ref.current.disabled ? button4Ref.current.focus() : ''
+          } else if (button8Ref.current === document.activeElement) {
+            !button2Ref.current.disabled ? button2Ref.current.focus() :
+            !button5Ref.current.disabled ? button5Ref.current.focus() : ''
+          } else if (button9Ref.current === document.activeElement) {
+            !button3Ref.current.disabled ? button3Ref.current.focus() :
+            !button6Ref.current.disabled ? button6Ref.current.focus() : ''
+          }
+          break;
+        case player===2?'arrowleft':'a':
+          if (!selectedButton) {
+            !button1Ref.current.disabled ? button1Ref.current.focus() :
+            !button2Ref.current.disabled ? button2Ref.current.focus() :
+            !button3Ref.current.disabled ? button3Ref.current.focus() :
+            !button4Ref.current.disabled ? button4Ref.current.focus() :
+            !button5Ref.current.disabled ? button5Ref.current.focus() :
+            !button6Ref.current.disabled ? button6Ref.current.focus() :
+            !button7Ref.current.disabled ? button7Ref.current.focus() :
+            !button8Ref.current.disabled ? button8Ref.current.focus() :
+            !button9Ref.current.disabled ? button9Ref.current.focus() : ''
+            setSelectedButton(true);
+          } else if (button1Ref.current === document.activeElement) {
+            !button3Ref.current.disabled ? button3Ref.current.focus() :
+            !button2Ref.current.disabled ? button2Ref.current.focus() : ''
+          } else if (button2Ref.current === document.activeElement) {
+            !button1Ref.current.disabled ? button1Ref.current.focus() :
+            !button3Ref.current.disabled ? button3Ref.current.focus() : ''
+          } else if (button3Ref.current === document.activeElement) {
+            !button2Ref.current.disabled ? button2Ref.current.focus() :
+            !button1Ref.current.disabled ? button1Ref.current.focus() : ''
+          } else if (button4Ref.current === document.activeElement) {
+            !button6Ref.current.disabled ? button6Ref.current.focus() :
+            !button5Ref.current.disabled ? button5Ref.current.focus() : ''
+          } else if (button5Ref.current === document.activeElement) {
+            !button4Ref.current.disabled ? button4Ref.current.focus() :
+            !button6Ref.current.disabled ? button6Ref.current.focus() : ''
+          } else if (button6Ref.current === document.activeElement) {
+            !button5Ref.current.disabled ? button5Ref.current.focus() :
+            !button4Ref.current.disabled ? button4Ref.current.focus() : ''
+          } else if (button7Ref.current === document.activeElement) {
+            !button9Ref.current.disabled ? button9Ref.current.focus() :
+            !button8Ref.current.disabled ? button8Ref.current.focus() : ''
+          } else if (button8Ref.current === document.activeElement) {
+            !button7Ref.current.disabled ? button7Ref.current.focus() :
+            !button9Ref.current.disabled ? button9Ref.current.focus() : ''
+          } else if (button9Ref.current === document.activeElement) {
+            !button8Ref.current.disabled ? button8Ref.current.focus() :
+            !button7Ref.current.disabled ? button7Ref.current.focus() : ''
+          }
+          break;
+        case player===2?'arrowright':'d':
+          if (!selectedButton) {
+            !button1Ref.current.disabled ? button1Ref.current.focus() :
+            !button2Ref.current.disabled ? button2Ref.current.focus() :
+            !button3Ref.current.disabled ? button3Ref.current.focus() :
+            !button4Ref.current.disabled ? button4Ref.current.focus() :
+            !button5Ref.current.disabled ? button5Ref.current.focus() :
+            !button6Ref.current.disabled ? button6Ref.current.focus() :
+            !button7Ref.current.disabled ? button7Ref.current.focus() :
+            !button8Ref.current.disabled ? button8Ref.current.focus() :
+            !button9Ref.current.disabled ? button9Ref.current.focus() : ''
+            setSelectedButton(true);
+          } else if (button1Ref.current === document.activeElement) {
+            !button2Ref.current.disabled ? button2Ref.current.focus() :
+            !button3Ref.current.disabled ? button3Ref.current.focus() : ''
+          } else if (button2Ref.current === document.activeElement) {
+            !button3Ref.current.disabled ? button3Ref.current.focus() :
+            !button1Ref.current.disabled ? button1Ref.current.focus() : ''
+          } else if (button3Ref.current === document.activeElement) {
+            !button1Ref.current.disabled ? button1Ref.current.focus() :
+            !button2Ref.current.disabled ? button2Ref.current.focus() : ''
+          } else if (button4Ref.current === document.activeElement) {
+            !button5Ref.current.disabled ? button5Ref.current.focus() :
+            !button6Ref.current.disabled ? button6Ref.current.focus() : ''
+          } else if (button5Ref.current === document.activeElement) {
+            !button6Ref.current.disabled ? button6Ref.current.focus() :
+            !button4Ref.current.disabled ? button4Ref.current.focus() : ''
+          } else if (button6Ref.current === document.activeElement) {
+            !button4Ref.current.disabled ? button4Ref.current.focus() :
+            !button5Ref.current.disabled ? button5Ref.current.focus() : ''
+          } else if (button7Ref.current === document.activeElement) {
+            !button8Ref.current.disabled ? button8Ref.current.focus() :
+            !button9Ref.current.disabled ? button9Ref.current.focus() : ''
+          } else if (button8Ref.current === document.activeElement) {
+            !button9Ref.current.disabled ? button9Ref.current.focus() :
+            !button7Ref.current.disabled ? button7Ref.current.focus() : ''
+          } else if (button9Ref.current === document.activeElement) {
+            !button7Ref.current.disabled ? button7Ref.current.focus() :
+            !button8Ref.current.disabled ? button8Ref.current.focus() : ''
+          }
+          break;
+        case player===2?' ':'enter':
+          event.preventDefault();
+          break;
+        default:
+          break;
+      }
+    };
+  
+    document.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [selectedButton]);
+  
+
+
 
   return (
     <section className={`${style.grilla}`}>
       <div className='flex'>
-        <button disabled={select1[0]||disabledEnd ? true : false} onClick={()=>{setSelect1([true,player===1? 'X' : 'O']);}} className={`${markResult===147 || markResult===159 || markResult===123 ? style.mark : ''}`}>
+        <button ref={button1Ref} tabIndex="0" disabled={select1[0]||disabledEnd ? true : false} onClick={()=>{setSelect1([true,player===1? 'X' : 'O']);}} className={`${markResult===147 || markResult===159 || markResult===123 ? style.mark : ''}`}>
           <div>
             {
               select1[0] ? select1[1] === 'X' ? <ElementX animate={true}/> : <ElementO animate={true}/> : 
@@ -96,15 +295,15 @@ const Table = (props) => {
             }
           </div>
         </button>
-        <button disabled={select2[0]||disabledEnd ? true : false} onClick={()=>{setSelect2([true,player===1? 'X' : 'O']);}} className={`${style.selectTwo} ${markResult===528 || markResult===123 ? style.mark : ''}`}>
+        <button ref={button2Ref} tabIndex="0" disabled={select2[0]||disabledEnd ? true : false} onClick={()=>{setSelect2([true,player===1? 'X' : 'O']);}} className={`${style.selectTwo} ${markResult===528 || markResult===123 ? style.mark : ''}`}>
           <div>
             {
               select2[0] ? select2[1] === 'X' ? <ElementX animate={true}/> : <ElementO animate={true}/> :
-              player===1 ? <div className={style.elementHover}><ElementX/></div> : <div className={style.elementHover}><ElementO/></div>
+              player===1 ? <div className={`${style.elementHover}`}><ElementX/></div> : <div className={style.elementHover}><ElementO/></div>
             }
           </div>
         </button>
-        <button disabled={select3[0]||disabledEnd ? true : false} onClick={()=>{setSelect3([true,player===1? 'X' : 'O']);}} className={`${markResult===369 || markResult===357 || markResult===123 ? style.mark : ''}`}>
+        <button ref={button3Ref} tabIndex="0" disabled={select3[0]||disabledEnd ? true : false} onClick={()=>{setSelect3([true,player===1? 'X' : 'O']);}} className={`${markResult===369 || markResult===357 || markResult===123 ? style.mark : ''}`}>
           <div>
             {
               select3[0] ? select3[1] === 'X' ? <ElementX animate={true}/> : <ElementO animate={true}/> :
@@ -114,7 +313,7 @@ const Table = (props) => {
         </button>
       </div>
       <div className='flex'>
-        <button disabled={select4[0]||disabledEnd ? true : false} onClick={()=>{setSelect4([true,player===1? 'X' : 'O']);}} className={`${style.selectFor} ${markResult===147 || markResult===564 ? style.mark : ''}`}>
+        <button ref={button4Ref} tabIndex="0" disabled={select4[0]||disabledEnd ? true : false} onClick={()=>{setSelect4([true,player===1? 'X' : 'O']);}} className={`${style.selectFor} ${markResult===147 || markResult===564 ? style.mark : ''}`}>
           <div>
             {
               select4[0] ? select4[1] === 'X' ? <ElementX animate={true}/> : <ElementO animate={true}/> : 
@@ -122,7 +321,7 @@ const Table = (props) => {
             }
           </div>
         </button>
-        <button disabled={select5[0]||disabledEnd ? true : false} onClick={()=>{setSelect5([true,player===1? 'X' : 'O']);}} className={`${style.selectFive} ${markResult===528 || markResult===357 || markResult===564 || markResult===159  ? style.mark : ''}`}>
+        <button ref={button5Ref} tabIndex="0" disabled={select5[0]||disabledEnd ? true : false} onClick={()=>{setSelect5([true,player===1? 'X' : 'O']);}} className={`${style.selectFive} ${markResult===528 || markResult===357 || markResult===564 || markResult===159  ? style.mark : ''}`}>
           <div>
             {
               select5[0] ? select5[1] === 'X' ? <ElementX animate={true}/> : <ElementO animate={true}/> :
@@ -130,7 +329,7 @@ const Table = (props) => {
             }
           </div>
         </button>
-        <button disabled={select6[0]||disabledEnd ? true : false} onClick={()=>{setSelect6([true,player===1? 'X' : 'O']);}} className={`${style.selectSix} ${markResult===369 || markResult===564 ? style.mark : ''}`}>
+        <button ref={button6Ref} tabIndex="0" disabled={select6[0]||disabledEnd ? true : false} onClick={()=>{setSelect6([true,player===1? 'X' : 'O']);}} className={`${style.selectSix} ${markResult===369 || markResult===564 ? style.mark : ''}`}>
           <div>
             {
               select6[0] ? select6[1] === 'X' ? <ElementX animate={true}/> : <ElementO animate={true}/> :
@@ -140,7 +339,7 @@ const Table = (props) => {
         </button>
       </div>
       <div className='flex'>
-        <button disabled={select7[0]||disabledEnd ? true : false} onClick={()=>{setSelect7([true,player===1? 'X' : 'O']);}} className={`${markResult===147 || markResult===357 || markResult===789 ? style.mark : ''}`}>
+        <button ref={button7Ref} tabIndex="0" disabled={select7[0]||disabledEnd ? true : false} onClick={()=>{setSelect7([true,player===1? 'X' : 'O']);}} className={`${markResult===147 || markResult===357 || markResult===789 ? style.mark : ''}`}>
           <div>
             {
               select7[0] ? select7[1] === 'X' ? <ElementX animate={true}/> : <ElementO animate={true}/> :
@@ -148,7 +347,7 @@ const Table = (props) => {
             }
           </div>
         </button>
-        <button disabled={select8[0]||disabledEnd ? true : false} onClick={()=>{setSelect8([true,player===1? 'X' : 'O']);}} className={`${style.selectHeight} ${markResult===528 || markResult===789 ? style.mark : ''}`}>
+        <button ref={button8Ref} tabIndex="0" disabled={select8[0]||disabledEnd ? true : false} onClick={()=>{setSelect8([true,player===1? 'X' : 'O']);}} className={`${style.selectHeight} ${markResult===528 || markResult===789 ? style.mark : ''}`}>
           <div>
             {
               select8[0] ? select8[1] === 'X' ? <ElementX animate={true}/> : <ElementO animate={true}/> : 
@@ -156,7 +355,7 @@ const Table = (props) => {
             }
           </div>
         </button>
-        <button disabled={select9[0]||disabledEnd ? true : false} onClick={()=>{setSelect9([true,player===1? 'X' : 'O']);}} className={`${markResult===369 || markResult===159 || markResult===789 ? style.mark : ''}`}>
+        <button ref={button9Ref} tabIndex="0" disabled={select9[0]||disabledEnd ? true : false} onClick={()=>{setSelect9([true,player===1? 'X' : 'O']);}} className={`${markResult===369 || markResult===159 || markResult===789 ? style.mark : ''}`}>
           <div>
             {
               select9[0] ? select9[1] === 'X' ? <ElementX animate={true}/> : <ElementO animate={true}/> :

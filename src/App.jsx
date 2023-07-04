@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import 'tailwindcss/tailwind.css';
 import './App.css';
+import MyContext from './MyContext';
+import { charsIcons, charsHover, charsReaction } from './utils/characters';
 import Table from './components/table/Table';
 import PlayersHead from './components/playersHead/playersHead';
 import PlayerRandom from './components/playerRandom/PlayerRandom';
@@ -56,32 +58,50 @@ function App() {
 
   return (
     <>
+    <MyContext.Provider value={
+      {
+        start, setStart, 
+        player, setPlayer, 
+        newGame, setnewGame, 
+        randomTurn, setRandomTurn, 
+        randomEnd, setRandomEnd, 
+        names:{namePlayerOne, namePlayerTwo}, 
+        setNamePlayer:{setNamePlayerOne,setNamePlayerTwo,name1: namePlayerOne,name2: namePlayerTwo},
+        modalOn, setModal,
+        characters:{player1:characterOne, player2:characterTwo},
+        setCharacters:{setCharacterOne, setCharacterTwo},
+        win, setWin,
+        cont, setCont,
+        charsIcons, charsHover, charsReaction
+      }
+    }>
       <section className='BodySection py-20'>
         <div className={`bodyAbsolute ${player===2 && randomTurn===''?'bgplayertwo':'bgplayerone'} ${randomTurn}`}></div>
-        <PlayersHead turn={player} randomEnd={randomEnd} names={{namePlayerOne, namePlayerTwo}} characters={{player1:characterOne, player2:characterTwo}} winner={win}/>
-        <PanelPlayer player={player} setModal={setModal}/>
+        <PlayersHead/>
+        <PanelPlayer/>
         <div className='flex justify-center relative'>
-          <Table style={{zIndex: 2}} setPlayer={setPlayer} player={player} setRandomTurn={setRandomTurn} setWin={setWin} newGame={newGame} start={start} winner={win} setnewGame={setnewGame}/>
+          <Table style={{zIndex: 2}}/>
           {
             !start ? 
             <div className='gameOff flex justify-center items-center'><button className='buttonStart text-white' onClick={()=>setStart(true)}>Iniciar Juego</button></div>:
-            !randomEnd ? <PlayerRandom names={{namePlayerOne, namePlayerTwo}} turn={randomTurn} character={{player1: characterOne, player2: characterTwo}}/> : ''
+            !randomEnd ? <PlayerRandom/> : ''
           }
         </div>
         {
           modalOn.on?
           <div className='absoluteTopEdit'>
-            <ModalEditPlayer playerEdit={modalOn.player} setModal={setModal} setNamePlayer={{setNamePlayerOne,setNamePlayerTwo,name1: namePlayerOne,name2: namePlayerTwo}} characters={{player1: characterOne, player2: characterTwo, setCharOne: setCharacterOne, setCharTwo: setCharacterTwo}}/>
+            <ModalEditPlayer/>
           </div> :
           ''
         }
         {
           win >= 1 && win<=3 ? 
           <div className='absoluteTopWin'>
-            <ModalWin winner={win} names={{namePlayerOne, namePlayerTwo}} characters={{player1:characterOne, player2:characterTwo}} cont={cont} setnewGame={setnewGame} setStart={setStart}/>
+            <ModalWin/>
           </div> : ''
         }
       </section>
+    </MyContext.Provider>
     </>
   )
 }

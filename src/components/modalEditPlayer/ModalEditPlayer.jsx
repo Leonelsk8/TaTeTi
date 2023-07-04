@@ -1,21 +1,11 @@
+import { useState, useContext } from 'react';
+import MyContext from '../../MyContext';
 import style from './modal.module.css';
-import {useState} from 'react';
-import char1 from '../../assets/characters/Char 1/icon.png';
-import char2 from '../../assets/characters/Char 2/icon.png';
-import char3 from '../../assets/characters/Char 3/icon.png';
-import char4 from '../../assets/characters/Char 4/icon.png';
-import char5 from '../../assets/characters/Char 5/icon.png';
-import charDefault from '../../assets/person-fill.svg';
-import char1Hover from '../../assets/characters/Char 1/characterHover.gif';
-import char2Hover from '../../assets/characters/Char 2/characterHover.gif';
-import char3Hover from '../../assets/characters/Char 3/characterHover.gif';
-import char4Hover from '../../assets/characters/Char 4/characterHover.gif';
-import char5Hover from '../../assets/characters/Char 5/characterHover.gif';
 
-const ModalEditPlayer = (props) => {
-  const {setModal, playerEdit, setNamePlayer, characters} = props;
+const ModalEditPlayer = () => {
+  const {setModal, modalOn, setNamePlayer, characters, setCharacters, charsIcons, charsHover} = useContext(MyContext);
   const [name, setName] = useState('');
-  const [click, setClick] = useState(playerEdit===1?characters.player1:characters.player2);
+  const [click, setClick] = useState(modalOn.player===1?characters.player1:characters.player2);
   const [selectChar, setSelectChar] = useState(null);
 
 
@@ -23,17 +13,17 @@ const ModalEditPlayer = (props) => {
     e.preventDefault();
     let valueName;
     if(name === '' || name.length > 15){
-      valueName = playerEdit===1? setNamePlayer.name1 : setNamePlayer.name2;
+      valueName = modalOn.player===1? setNamePlayer.name1 : setNamePlayer.name2;
     }else{
       valueName = name;
     }
 
-    if(playerEdit === 1){
+    if(modalOn.player === 1){
       setNamePlayer.setNamePlayerOne(valueName);
-      selectChar !== null ? characters.setCharOne(selectChar) : ''
-    } else if(playerEdit === 2){
+      selectChar !== null ? setCharacters.setCharacterOne(selectChar) : ''
+    } else if(modalOn.player === 2){
       setNamePlayer.setNamePlayerTwo(valueName);
-      selectChar !== null ? characters.setCharTwo(selectChar) : ''
+      selectChar !== null ? setCharacters.setCharacterTwo(selectChar) : ''
     } 
   }
 
@@ -45,7 +35,7 @@ const ModalEditPlayer = (props) => {
     <div className='grid grid-cols-12 gap-0 text-white'>
       <div className={`col-start-4 col-span-6 ${style.modalEdit}`}>
         <div className='flex justify-between'>
-          <p className='text-3xl py-2'>{playerEdit===1?'Jugador 1':'Jugador 2'}</p>
+          <p className='text-3xl py-2'>{modalOn.player===1?'Jugador 1':'Jugador 2'}</p>
           <button className={`text-2xl px-4 py-2 ${style.buttExit}`} onClick={()=>{setModal({on:false,player:null})}}>X</button>
         </div>
         <div className='mt-3'>
@@ -68,27 +58,27 @@ const ModalEditPlayer = (props) => {
                 </button>
                 <button type='button' className={`col-span-2 ${click===1 ? style.activeChar: ''}`} onClick={()=>{setClick(1);setSelectChar(1)}}>
                   <div className={`${style.character}`}>
-                    <img src={char1} alt="" />
+                    <img src={charsIcons.char1Icon} alt="" />
                   </div>
                 </button>
                 <button type='button' className={`col-span-2 ${click===2 ? style.activeChar:''}`} onClick={()=>{setClick(2);setSelectChar(2)}}>
                   <div className={`${style.character}`}>
-                    <img src={char2} alt="" />
+                    <img src={charsIcons.char2Icon} alt="" />
                   </div>
                 </button>
                 <button type='button' className={`col-start-4 col-span-2 ${click===3 ? style.activeChar:''}`} onClick={()=>{setClick(3);setSelectChar(3)}}>
                   <div className={`${style.character}`}>
-                    <img src={char3} alt="" />
+                    <img src={charsIcons.char3Icon} alt="" />
                   </div>
                 </button>
                 <button type='button' className={`col-span-2 ${click===4 ? style.activeChar:''}`} onClick={()=>{setClick(4);setSelectChar(4)}}>
                   <div className={`${style.character}`}>
-                    <img src={char4} alt="" />
+                    <img src={charsIcons.char4Icon} alt="" />
                   </div>
                 </button>
                 <button type='button' className={`col-span-2 ${click===5 ? style.activeChar:''}`} onClick={()=>{setClick(5);setSelectChar(5)}}>
                   <div className={`${style.character}`}>
-                    <img src={char5} alt="" />
+                    <img src={charsIcons.char5Icon} alt="" />
                   </div>
                 </button>
               </div>
@@ -97,12 +87,12 @@ const ModalEditPlayer = (props) => {
               <div className={style.hoverChar}>
                 <div className={style.luzHov}></div>
                 {
-                  click===0? <img src={charDefault}></img> :
-                  click===1? <img src={char1Hover}></img> : 
-                  click===2? <img src={char2Hover}></img> : 
-                  click===3? <img src={char3Hover}></img> : 
-                  click===4? <img src={char4Hover}></img> : 
-                  click===5? <img src={char5Hover}></img> : ''
+                  click===0? <img src={charsIcons.charIconDefault}></img> :
+                  click===1? <img src={charsHover.char1Hover}></img> : 
+                  click===2? <img src={charsHover.char2Hover}></img> : 
+                  click===3? <img src={charsHover.char3Hover}></img> : 
+                  click===4? <img src={charsHover.char4Hover}></img> : 
+                  click===5? <img src={charsHover.char5Hover}></img> : ''
                 }
               </div>
             </div>

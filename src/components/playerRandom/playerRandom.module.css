@@ -68,7 +68,7 @@
   border-radius: 10px;
 }
 
-.character{
+.characters{
   width: 3em;
   height: 3em;
   display: flex;
@@ -78,7 +78,7 @@
   border-radius: 10px;
 }
 
-.character img{
+.characters img{
   width: 100%;
   height: auto;
 }

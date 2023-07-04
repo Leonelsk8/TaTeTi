@@ -1,7 +1,9 @@
+import { useContext } from 'react';
+import MyContext from '../../MyContext';
 import style from './panelplayer.module.css';
 
-const PanelPlayer = (props) => {
-  const {player, setModal} = props;
+const PanelPlayer = () => {
+  const {player, setModal} = useContext(MyContext);
 
   return (
     <div className='grid grid-cols-12 gap-0 mb-6' >

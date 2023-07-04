@@ -42,6 +42,10 @@
   opacity: 40%;
 }
 
+.grilla button:focus .elementHover{
+  opacity: 40%;
+}
+
 .mark{
   background-color: #ffffff88;
 }
