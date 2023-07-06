@@ -112,6 +112,11 @@
   }
 }
 
+.panels{
+  background-color: rgba(128, 128, 128, 0.541);
+  border-radius: 10px;
+}
+
 .gameOff{
   position: absolute;
   width: 100%;

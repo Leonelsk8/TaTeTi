@@ -9,6 +9,8 @@ import PlayerRandom from './components/playerRandom/PlayerRandom';
 import PanelPlayer from './components/panelPlayer/PanelPlayer';
 import ModalEditPlayer from './components/modalEditPlayer/ModalEditPlayer';
 import ModalWin from './components/modalWin/ModalWin';
+import KeyboardPanel from './components/keyboardPanel/KeyboardPanel';
+import Timer from './components/timer/Timer';
 
 function App() {
   const [start, setStart] = useState(false);
@@ -75,10 +77,11 @@ function App() {
         charsIcons, charsHover, charsReaction
       }
     }>
-      <section className='BodySection py-20'>
+      <section className='BodySection py-10'>
         <div className={`bodyAbsolute ${player===2 && randomTurn===''?'bgplayertwo':'bgplayerone'} ${randomTurn}`}></div>
         <PlayersHead/>
         <PanelPlayer/>
+        <Timer/>
         <div className='flex justify-center relative'>
           <Table style={{zIndex: 2}}/>
           {
@@ -87,6 +90,7 @@ function App() {
             !randomEnd ? <PlayerRandom/> : ''
           }
         </div>
+        <KeyboardPanel/>
         {
           modalOn.on?
           <div className='absoluteTopEdit'>
@@ -100,6 +104,7 @@ function App() {
             <ModalWin/>
           </div> : ''
         }
+      
       </section>
     </MyContext.Provider>
     </>

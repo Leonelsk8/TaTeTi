@@ -1,0 +1,95 @@
+@font-face {
+  font-family: 'digital';
+  src: url('../../assets/fonts/DS-DIGI.TTF') format('truetype');
+}
+
+.timerBody{
+  padding: 1.3em;
+  background-color: rgba(128, 128, 128, 0.541);
+  font-family: 'digital', sans-serif;
+  font-weight: 500;
+  animation: timerAnimate 8s linear infinite;
+}
+
+@keyframes timerAnimate {
+  0%{
+    border-top-left-radius: 100%;
+    border-top-right-radius: 70%;
+    border-bottom-left-radius: 90%;
+    border-bottom-right-radius: 70%;
+  }
+  10%{
+    border-top-left-radius: 90%;
+    border-top-right-radius: 60%;
+    border-bottom-left-radius: 100%;
+    border-bottom-right-radius: 80%;
+  }
+  20%{
+    border-top-left-radius: 70%;
+    border-top-right-radius: 60%;
+    border-bottom-left-radius: 90%;
+    border-bottom-right-radius: 100%;
+  }
+  30%{
+    border-top-left-radius: 80%;
+    border-top-right-radius: 100%;
+    border-bottom-left-radius: 70%;
+    border-bottom-right-radius: 80%;
+  }
+  40%{
+    border-top-left-radius: 100%;
+    border-top-right-radius: 85%;
+    border-bottom-left-radius: 85%;
+    border-bottom-right-radius: 70%;
+  }
+  50%{
+    border-top-left-radius: 60%;
+    border-top-right-radius: 100%;
+    border-bottom-left-radius: 70%;
+    border-bottom-right-radius: 90%;
+  }
+  60%{
+    border-top-left-radius: 100%;
+    border-top-right-radius: 80%;
+    border-bottom-left-radius: 80%;
+    border-bottom-right-radius: 75%;
+  }
+  70%{
+    border-top-left-radius: 80%;
+    border-top-right-radius: 60%;
+    border-bottom-left-radius: 100%;
+    border-bottom-right-radius: 90%;
+  }
+  80%{
+    border-top-left-radius: 70%;
+    border-top-right-radius: 65%;
+    border-bottom-left-radius: 85%;
+    border-bottom-right-radius: 100%;
+  }
+  90%{
+    border-top-left-radius: 80%;
+    border-top-right-radius: 100%;
+    border-bottom-left-radius: 60%;
+    border-bottom-right-radius: 90%;
+  }
+  100%{
+    border-top-left-radius: 100%;
+    border-top-right-radius: 75%;
+    border-bottom-left-radius: 90%;
+    border-bottom-right-radius: 70%;
+  }
+}
+
+.timerEnd{
+  color: rgb(172, 0, 0);
+  animation: timerEndAnimate 0.8s linear infinite;
+}
+
+@keyframes timerEndAnimate {
+  0%{
+    opacity: 0%;
+  }
+  100%{
+    opacity: 100%;
+  }
+}

@@ -5,7 +5,7 @@ import ElementX from '../elements/ElementX';
 import style from './table.module.css';
 
 const Table = () => {
-  const {setPlayer, player, setRandomTurn, setWin, newGame, start, setnewGame} = useContext(MyContext);
+  const {setPlayer, player, setRandomTurn, setWin, newGame, start, setnewGame, randomEnd} = useContext(MyContext);
   const [select1, setSelect1] = useState(false);
   const [select2, setSelect2] = useState(false);
   const [select3, setSelect3] = useState(false);
@@ -98,6 +98,7 @@ const Table = () => {
   }, [select1,select2,select3,select4,select5,select6,select7,select8,select9]);
 
   useEffect(() => {
+    if(start && randomEnd){
     const handleKeyDown = (event) => {
       if (event.key.startsWith('Arrow')) {
         event.preventDefault();
@@ -279,7 +280,8 @@ const Table = () => {
     return () => {
       document.removeEventListener('keydown', handleKeyDown);
     };
-  }, [selectedButton]);
+  }
+  }, [selectedButton, player, randomEnd]);
   
 
 
