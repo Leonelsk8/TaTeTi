@@ -51,29 +51,29 @@ const ModalWin = () => {
   },[])
 
   return (
-    <div className='grid grid-cols-12 gap-0 text-white'>
-      <div className={`col-start-4 col-span-6 ${style.modalWin}`}>
-        <p className='text-center text-2xl'>{win===1? `Ganó ${names.namePlayerOne}` : win===2? `Ganó ${names.namePlayerTwo}` : 'Empate'}</p>
+    <div className='grid grid-cols-12 gap-0 text-white animate__animated animate__bounceIn'>
+      <div className={`col-start-1 col-span-12 md:col-start-2 md:col-span-10 lg:col-start-4 lg:col-span-6 ${style.modalWin}`}>
+        <p className='text-center text-xl md:text-2xl'>{win===1? `Ganó ${names.namePlayerOne}` : win===2? `Ganó ${names.namePlayerTwo}` : 'Empate'}</p>
         <div className={`${style.bodyCharacter} mb-4`}>
           <div className='flex flex-col'>
             <div className={style.character}>
               <img src={winnerChar} alt="" />
             </div>
-            <p className='text-center mt-3 text-lg'>{win===2 ? names.namePlayerTwo : names.namePlayerOne}{win!==3 ? <i className="bi bi-trophy-fill ms-2"></i>: ''}</p>
+            <p className='text-center mt-2 md:mt-3 text-md md:text-lg'>{win===2 ? names.namePlayerTwo : names.namePlayerOne}{win!==3 ? <i className="bi bi-trophy-fill ms-2"></i>: ''}</p>
           </div>
           <div className='flex'>
-            <p className={`${style.contWin} p-4 text-2xl`}>{win===2? cont.player2 : cont.player1}</p><p className='p-4 text-2xl'>{win===2? cont.player1 : cont.player2}</p>
+            <p className={`${style.contWin} p-4 text-xl md:text-2xl`}>{win===2? cont.player2 : cont.player1}</p><p className='p-4 text-xl md:text-2xl'>{win===2? cont.player1 : cont.player2}</p>
           </div>
           <div className='flex flex-col'>
             <div className={`${style.character}`}>
               <img src={loserChar}></img>
             </div>
-            <p className='text-center mt-3 text-lg'>{win===2 ? names.namePlayerOne : names.namePlayerTwo}</p>
+            <p className='text-center mt-2 md:mt-3 text-md md:text-lg'>{win===2 ? names.namePlayerOne : names.namePlayerTwo}</p>
           </div>
         </div>
         <div className='flex justify-center'>
-          <button className='me-3' onClick={()=>setnewGame(true)}>Jugar otra ronda</button>
-          <button onClick={()=>setStart(false)}>Reiniciar juego</button>
+          <button className='me-3 text-sm md:text-md' onClick={()=>setnewGame(true)}>Jugar otra ronda</button>
+          <button className='text-sm md:text-md' onClick={()=>setStart(false)}>Reiniciar juego</button>
         </div>
       </div>
     </div>

@@ -75,7 +75,7 @@ const Timer = () => {
   return (
     <div className='flex justify-center mb-5'>
       <div className={`${style.timerBody}`}>
-        <p className={`text-2xl ${time===0&&turn!==win? style.timerEnd : ''}`}>00:{time>9 ? time : `0${time}`}</p>
+        <p className={`text-3xl ${time===0&&turn!==win? style.timerEnd : ''} ${time<=5 ? style.warningTime  : ''}`}>00:{time>9 ? time : `0${time}`}</p>
       </div>
     </div>
   )

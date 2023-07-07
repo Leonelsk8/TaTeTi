@@ -24,3 +24,9 @@
 .charTwo{
   transform: rotateY(180deg);
 }
+
+@media (max-width: 1024px){
+  .headAbsolute{
+    font-size: 12px;
+  }
+}

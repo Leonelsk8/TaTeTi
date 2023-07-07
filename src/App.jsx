@@ -77,10 +77,10 @@ function App() {
         charsIcons, charsHover, charsReaction
       }
     }>
-      <section className='BodySection py-10'>
+      <section className='BodySection py-20 lg:py-5'>
         <div className={`bodyAbsolute ${player===2 && randomTurn===''?'bgplayertwo':'bgplayerone'} ${randomTurn}`}></div>
         <PlayersHead/>
-        <PanelPlayer/>
+        <KeyboardPanel/>
         <Timer/>
         <div className='flex justify-center relative'>
           <Table style={{zIndex: 2}}/>
@@ -90,7 +90,8 @@ function App() {
             !randomEnd ? <PlayerRandom/> : ''
           }
         </div>
-        <KeyboardPanel/>
+        
+        <PanelPlayer/>
         {
           modalOn.on?
           <div className='absoluteTopEdit'>

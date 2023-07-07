@@ -8,7 +8,7 @@ const PlayersHead = () => {
   return (
     <div className={`flex justify-between px-6 py-4 ${style.headAbsolute}`} style={{zIndex:-1}}>
       <div className={player ===1 || player===null? 'text-dark':'text-white'}>
-        <h1 className='text-4xl'>{names.namePlayerOne}</h1>
+        <h1 className='text-2xl lg:text-4xl'>{names.namePlayerOne}</h1>
         <div className='flex justify-start'>
           <div className={`mt-3 ${style.character}`}>
             {
@@ -23,11 +23,11 @@ const PlayersHead = () => {
         </div>
 
         {
-          player === 1 && randomEnd ? <p className='text-2xl'>Su turno</p> : ''
+          player === 1 && randomEnd ? <p className='text-lg lg:text-2xl'>Su turno</p> : ''
         }
       </div>
       <div className={player ===2 ? 'text-dark':'text-white'}>
-        <h1 className='text-4xl'>{names.namePlayerTwo}</h1>
+        <h1 className='text-2xl lg:text-4xl'>{names.namePlayerTwo}</h1>
         <div className='flex justify-end'>
           <div className={`mt-3 ${style.character}`}>
             {
@@ -41,7 +41,7 @@ const PlayersHead = () => {
           </div>
         </div>
         {
-          player === 2 && randomEnd ? <p className='text-2xl text-end'>Su turno</p> : ''
+          player === 2 && randomEnd ? <p className='text-lg lg:text-2xl text-end'>Su turno</p> : ''
         }
       </div>
     </div>

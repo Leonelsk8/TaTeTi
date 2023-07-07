@@ -93,3 +93,16 @@
     opacity: 100%;
   }
 }
+
+.warningTime{
+  animation: zoomWarning 1s linear infinite;
+}
+
+@keyframes zoomWarning {
+  0%{
+    transform: scale(100%);
+  }
+  100%{
+    transform: scale(127%);
+  } 
+}

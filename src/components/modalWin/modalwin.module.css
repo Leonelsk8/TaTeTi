@@ -46,3 +46,10 @@
 .contWin{
   border-right: 2px solid #fff;
 }
+
+@media (max-width: 768px){
+  .character{
+    width: 6em;
+    height: 6em;
+  }
+} 
