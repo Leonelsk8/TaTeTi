@@ -4,7 +4,7 @@ import './App.css';
 import MyContext from './MyContext';
 import { charsIcons, charsHover, charsReaction } from './utils/characters';
 import Table from './components/table/Table';
-import PlayersHead from './components/playersHead/playersHead';
+import PlayersHead from './components/playersHead/PlayersHead';
 import PlayerRandom from './components/playerRandom/PlayerRandom';
 import PanelPlayer from './components/panelPlayer/PanelPlayer';
 import ModalEditPlayer from './components/modalEditPlayer/ModalEditPlayer';
