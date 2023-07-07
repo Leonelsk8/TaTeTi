@@ -9,7 +9,6 @@ const KeyboardPanel = () => {
     <div className='lg:grid lg:grid-cols-12 lg:gap-0 lg:mt-5 hidden mb-6'>
       <div className={`col-start-4 col-span-6 panels py-3 flex justify-between`}>
         <div className='flex flex-col items-center'>
-          <p className='text-xl mb-3'>Jugador 1</p>
           <div className={style.divsIMG}>
             <div className={`flex items-center relative ${style.images}`}>
               <img src={wasdKeys} alt="teclasWASD" className='me-3'/>
@@ -19,7 +18,6 @@ const KeyboardPanel = () => {
           </div>
         </div>
         <div className='flex flex-col items-center'>
-          <p className='text-xl mb-3'>Jugador 2</p>
           <div className={style.divsIMG}>
             <div className='flex items-center relative'>
               <img src={arrowsKeys} alt="teclasWASD" className='me-3'/>

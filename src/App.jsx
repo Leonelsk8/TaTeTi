@@ -11,6 +11,7 @@ import ModalEditPlayer from './components/modalEditPlayer/ModalEditPlayer';
 import ModalWin from './components/modalWin/ModalWin';
 import KeyboardPanel from './components/keyboardPanel/KeyboardPanel';
 import Timer from './components/timer/Timer';
+import Footer from './components/footer/Footer';
 
 function App() {
   const [start, setStart] = useState(false);
@@ -77,7 +78,7 @@ function App() {
         charsIcons, charsHover, charsReaction
       }
     }>
-      <section className='BodySection py-20 lg:py-5'>
+      <section className='BodySection pt-20 lg:pt-5'>
         <div className={`bodyAbsolute ${player===2 && randomTurn===''?'bgplayertwo':'bgplayerone'} ${randomTurn}`}></div>
         <PlayersHead/>
         <KeyboardPanel/>
@@ -105,7 +106,9 @@ function App() {
             <ModalWin/>
           </div> : ''
         }
-      
+        <div className='footerr'>
+          <Footer/>
+        </div>
       </section>
     </MyContext.Provider>
     </>

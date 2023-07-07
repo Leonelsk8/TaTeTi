@@ -1,0 +1,36 @@
+.Footer{
+  width: 100%;
+  background: rgb(0,0,0);
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.966) 20%, rgba(68, 68, 68, 0.055) 100%);
+  border-top: 1px solid gray;
+}
+
+.Footer img{
+  width: 3em;
+  height: 3em;
+  filter: drop-shadow(0px 0px 10px #fff)
+}
+
+.Footer a{
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.Footer a:hover{
+  transform: scale(110%);
+}
+
+.Footer a:hover img{
+  filter: invert(100%);
+}
+
+.copyright{
+  background-color: rgba(128, 128, 128, 0.637);
+  margin: 1em 0.7em 0 0.7em;
+  padding: 0.6em;
+}
+
+.title{
+  font-weight: bold;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}

@@ -27,6 +27,7 @@ const Table = () => {
   const button7Ref = useRef(null);
   const button8Ref = useRef(null);
   const button9Ref = useRef(null);
+  const arrayButtons = [button1Ref,button2Ref,button3Ref,button4Ref,button5Ref,button6Ref,button7Ref,button8Ref,button9Ref];
 
   useEffect(()=>{
     if(newGame || !start){
@@ -98,7 +99,18 @@ const Table = () => {
   }, [select1,select2,select3,select4,select5,select6,select7,select8,select9]);
 
   useEffect(() => {
+    const buttonRandom = ()=>{
+      arrayButtons.some((button)=>{
+        if(!button.current.disabled && button.current !== document.activeElement){
+          button.current.focus(); 
+          return true;
+        }
+        return false;
+      });
+    }
+
     if(start && randomEnd){
+
     const handleKeyDown = (event) => {
       if (event.key.startsWith('Arrow')) {
         event.preventDefault();
@@ -106,166 +118,170 @@ const Table = () => {
       switch (event.key.toLowerCase()) {
         case player===2?'arrowup':'w':
           if (!selectedButton) {
-            !button1Ref.current.disabled ? button1Ref.current.focus() :
-            !button2Ref.current.disabled ? button2Ref.current.focus() :
-            !button3Ref.current.disabled ? button3Ref.current.focus() :
-            !button4Ref.current.disabled ? button4Ref.current.focus() :
-            !button5Ref.current.disabled ? button5Ref.current.focus() :
-            !button6Ref.current.disabled ? button6Ref.current.focus() :
-            !button7Ref.current.disabled ? button7Ref.current.focus() :
-            !button8Ref.current.disabled ? button8Ref.current.focus() :
-            !button9Ref.current.disabled ? button9Ref.current.focus() : ''
+            buttonRandom();
             setSelectedButton(true);
           } else if (button1Ref.current === document.activeElement) {
             !button7Ref.current.disabled ? button7Ref.current.focus() :
-            !button4Ref.current.disabled ? button4Ref.current.focus() : ''
+            !button4Ref.current.disabled ? button4Ref.current.focus() : 
+            button2Ref.current.disabled && button3Ref.current.disabled ? buttonRandom() : ''
           } else if (button2Ref.current === document.activeElement) {
             !button8Ref.current.disabled ? button8Ref.current.focus() :
-            !button5Ref.current.disabled ? button5Ref.current.focus() : ''
+            !button5Ref.current.disabled ? button5Ref.current.focus() :
+            button1Ref.current.disabled && button3Ref.current.disabled ? buttonRandom() : ''
           } else if (button3Ref.current === document.activeElement) {
             !button9Ref.current.disabled ? button9Ref.current.focus() :
-            !button6Ref.current.disabled ? button6Ref.current.focus() : ''
+            !button6Ref.current.disabled ? button6Ref.current.focus() :
+            button1Ref.current.disabled && button2Ref.current.disabled ? buttonRandom() : ''
           } else if (button4Ref.current === document.activeElement) {
             !button1Ref.current.disabled ? button1Ref.current.focus() :
-            !button7Ref.current.disabled ? button7Ref.current.focus() : ''
+            !button7Ref.current.disabled ? button7Ref.current.focus() :
+            button5Ref.current.disabled && button6Ref.current.disabled ? buttonRandom() : ''
           } else if (button5Ref.current === document.activeElement) {
             !button2Ref.current.disabled ? button2Ref.current.focus() :
-            !button8Ref.current.disabled ? button8Ref.current.focus() : ''
+            !button8Ref.current.disabled ? button8Ref.current.focus() :
+            button4Ref.current.disabled && button6Ref.current.disabled ? buttonRandom() : ''
           } else if (button6Ref.current === document.activeElement) {
             !button3Ref.current.disabled ? button3Ref.current.focus() :
-            !button9Ref.current.disabled ? button9Ref.current.focus() : ''
+            !button9Ref.current.disabled ? button9Ref.current.focus() :
+            button4Ref.current.disabled && button5Ref.current.disabled ? buttonRandom() : ''
           } else if (button7Ref.current === document.activeElement) {
             !button4Ref.current.disabled ? button4Ref.current.focus() :
-            !button1Ref.current.disabled ? button1Ref.current.focus() : ''
+            !button1Ref.current.disabled ? button1Ref.current.focus() :
+            button8Ref.current.disabled && button9Ref.current.disabled ? buttonRandom() : ''
           } else if (button8Ref.current === document.activeElement) {
             !button5Ref.current.disabled ? button5Ref.current.focus() :
-            !button2Ref.current.disabled ? button2Ref.current.focus() : ''
+            !button2Ref.current.disabled ? button2Ref.current.focus() :
+            button7Ref.current.disabled && button9Ref.current.disabled ? buttonRandom() : ''
           } else if (button9Ref.current === document.activeElement) {
             !button6Ref.current.disabled ? button6Ref.current.focus() :
-            !button3Ref.current.disabled ? button3Ref.current.focus() : ''
+            !button3Ref.current.disabled ? button3Ref.current.focus() : 
+            button7Ref.current.disabled && button8Ref.current.disabled ? buttonRandom() : ''
           }
           break;
         case player===2?'arrowdown':'s':
           if (!selectedButton) {
-            !button1Ref.current.disabled ? button1Ref.current.focus() :
-            !button2Ref.current.disabled ? button2Ref.current.focus() :
-            !button3Ref.current.disabled ? button3Ref.current.focus() :
-            !button4Ref.current.disabled ? button4Ref.current.focus() :
-            !button5Ref.current.disabled ? button5Ref.current.focus() :
-            !button6Ref.current.disabled ? button6Ref.current.focus() :
-            !button7Ref.current.disabled ? button7Ref.current.focus() :
-            !button8Ref.current.disabled ? button8Ref.current.focus() :
-            !button9Ref.current.disabled ? button9Ref.current.focus() : ''
+            buttonRandom();
             setSelectedButton(true);
           } else if (button1Ref.current === document.activeElement) {
             !button4Ref.current.disabled ? button4Ref.current.focus() :
-            !button7Ref.current.disabled ? button7Ref.current.focus() : ''
+            !button7Ref.current.disabled ? button7Ref.current.focus() :
+            button2Ref.current.disabled && button3Ref.current.disabled ? buttonRandom() : ''
           } else if (button2Ref.current === document.activeElement) {
             !button5Ref.current.disabled ? button5Ref.current.focus() :
-            !button8Ref.current.disabled ? button8Ref.current.focus() : ''
+            !button8Ref.current.disabled ? button8Ref.current.focus() :
+            button1Ref.current.disabled && button3Ref.current.disabled ? buttonRandom() : ''
           } else if (button3Ref.current === document.activeElement) {
             !button6Ref.current.disabled ? button6Ref.current.focus() :
-            !button9Ref.current.disabled ? button9Ref.current.focus() : ''
+            !button9Ref.current.disabled ? button9Ref.current.focus() :
+            button1Ref.current.disabled && button2Ref.current.disabled ? buttonRandom() : ''
           } else if (button4Ref.current === document.activeElement) {
             !button7Ref.current.disabled ? button7Ref.current.focus() :
-            !button1Ref.current.disabled ? button1Ref.current.focus() : ''
+            !button1Ref.current.disabled ? button1Ref.current.focus() :
+            button5Ref.current.disabled && button6Ref.current.disabled ? buttonRandom() : ''
           } else if (button5Ref.current === document.activeElement) {
             !button8Ref.current.disabled ? button8Ref.current.focus() :
-            !button2Ref.current.disabled ? button2Ref.current.focus() : ''
+            !button2Ref.current.disabled ? button2Ref.current.focus() :
+            button4Ref.current.disabled && button6Ref.current.disabled ? buttonRandom() : ''
           } else if (button6Ref.current === document.activeElement) {
             !button9Ref.current.disabled ? button9Ref.current.focus() :
-            !button3Ref.current.disabled ? button3Ref.current.focus() : ''
+            !button3Ref.current.disabled ? button3Ref.current.focus() :
+            button4Ref.current.disabled && button5Ref.current.disabled ? buttonRandom() : ''
           } else if (button7Ref.current === document.activeElement) {
             !button1Ref.current.disabled ? button1Ref.current.focus() :
-            !button4Ref.current.disabled ? button4Ref.current.focus() : ''
+            !button4Ref.current.disabled ? button4Ref.current.focus() :
+            button8Ref.current.disabled && button9Ref.current.disabled ? buttonRandom() : ''
           } else if (button8Ref.current === document.activeElement) {
             !button2Ref.current.disabled ? button2Ref.current.focus() :
-            !button5Ref.current.disabled ? button5Ref.current.focus() : ''
+            !button5Ref.current.disabled ? button5Ref.current.focus() :
+            button7Ref.current.disabled && button9Ref.current.disabled ? buttonRandom() : ''
           } else if (button9Ref.current === document.activeElement) {
             !button3Ref.current.disabled ? button3Ref.current.focus() :
-            !button6Ref.current.disabled ? button6Ref.current.focus() : ''
+            !button6Ref.current.disabled ? button6Ref.current.focus() :
+            button7Ref.current.disabled && button8Ref.current.disabled ? buttonRandom() : ''
           }
           break;
         case player===2?'arrowleft':'a':
           if (!selectedButton) {
-            !button1Ref.current.disabled ? button1Ref.current.focus() :
-            !button2Ref.current.disabled ? button2Ref.current.focus() :
-            !button3Ref.current.disabled ? button3Ref.current.focus() :
-            !button4Ref.current.disabled ? button4Ref.current.focus() :
-            !button5Ref.current.disabled ? button5Ref.current.focus() :
-            !button6Ref.current.disabled ? button6Ref.current.focus() :
-            !button7Ref.current.disabled ? button7Ref.current.focus() :
-            !button8Ref.current.disabled ? button8Ref.current.focus() :
-            !button9Ref.current.disabled ? button9Ref.current.focus() : ''
+            buttonRandom();
             setSelectedButton(true);
           } else if (button1Ref.current === document.activeElement) {
             !button3Ref.current.disabled ? button3Ref.current.focus() :
-            !button2Ref.current.disabled ? button2Ref.current.focus() : ''
+            !button2Ref.current.disabled ? button2Ref.current.focus() :
+            button4Ref.current.disabled && button7Ref.current.disabled ? buttonRandom() : ''
           } else if (button2Ref.current === document.activeElement) {
             !button1Ref.current.disabled ? button1Ref.current.focus() :
-            !button3Ref.current.disabled ? button3Ref.current.focus() : ''
+            !button3Ref.current.disabled ? button3Ref.current.focus() :
+            button5Ref.current.disabled && button8Ref.current.disabled ? buttonRandom() : ''
           } else if (button3Ref.current === document.activeElement) {
             !button2Ref.current.disabled ? button2Ref.current.focus() :
-            !button1Ref.current.disabled ? button1Ref.current.focus() : ''
+            !button1Ref.current.disabled ? button1Ref.current.focus() :
+            button6Ref.current.disabled && button9Ref.current.disabled ? buttonRandom() : ''
           } else if (button4Ref.current === document.activeElement) {
             !button6Ref.current.disabled ? button6Ref.current.focus() :
-            !button5Ref.current.disabled ? button5Ref.current.focus() : ''
+            !button5Ref.current.disabled ? button5Ref.current.focus() :
+            button1Ref.current.disabled && button7Ref.current.disabled ? buttonRandom() : ''
           } else if (button5Ref.current === document.activeElement) {
             !button4Ref.current.disabled ? button4Ref.current.focus() :
-            !button6Ref.current.disabled ? button6Ref.current.focus() : ''
+            !button6Ref.current.disabled ? button6Ref.current.focus() :
+            button2Ref.current.disabled && button8Ref.current.disabled ? buttonRandom() : ''
           } else if (button6Ref.current === document.activeElement) {
             !button5Ref.current.disabled ? button5Ref.current.focus() :
-            !button4Ref.current.disabled ? button4Ref.current.focus() : ''
+            !button4Ref.current.disabled ? button4Ref.current.focus() :
+            button3Ref.current.disabled && button9Ref.current.disabled ? buttonRandom() : ''
           } else if (button7Ref.current === document.activeElement) {
             !button9Ref.current.disabled ? button9Ref.current.focus() :
-            !button8Ref.current.disabled ? button8Ref.current.focus() : ''
+            !button8Ref.current.disabled ? button8Ref.current.focus() :
+            button4Ref.current.disabled && button1Ref.current.disabled ? buttonRandom() : ''
           } else if (button8Ref.current === document.activeElement) {
             !button7Ref.current.disabled ? button7Ref.current.focus() :
-            !button9Ref.current.disabled ? button9Ref.current.focus() : ''
+            !button9Ref.current.disabled ? button9Ref.current.focus() :
+            button5Ref.current.disabled && button2Ref.current.disabled ? buttonRandom() : ''
           } else if (button9Ref.current === document.activeElement) {
             !button8Ref.current.disabled ? button8Ref.current.focus() :
-            !button7Ref.current.disabled ? button7Ref.current.focus() : ''
+            !button7Ref.current.disabled ? button7Ref.current.focus() :
+            button6Ref.current.disabled && button3Ref.current.disabled ? buttonRandom() : ''
           }
           break;
         case player===2?'arrowright':'d':
           if (!selectedButton) {
-            !button1Ref.current.disabled ? button1Ref.current.focus() :
-            !button2Ref.current.disabled ? button2Ref.current.focus() :
-            !button3Ref.current.disabled ? button3Ref.current.focus() :
-            !button4Ref.current.disabled ? button4Ref.current.focus() :
-            !button5Ref.current.disabled ? button5Ref.current.focus() :
-            !button6Ref.current.disabled ? button6Ref.current.focus() :
-            !button7Ref.current.disabled ? button7Ref.current.focus() :
-            !button8Ref.current.disabled ? button8Ref.current.focus() :
-            !button9Ref.current.disabled ? button9Ref.current.focus() : ''
+            buttonRandom();
             setSelectedButton(true);
           } else if (button1Ref.current === document.activeElement) {
             !button2Ref.current.disabled ? button2Ref.current.focus() :
-            !button3Ref.current.disabled ? button3Ref.current.focus() : ''
+            !button3Ref.current.disabled ? button3Ref.current.focus() :
+            button4Ref.current.disabled && button7Ref.current.disabled ? buttonRandom() : ''
           } else if (button2Ref.current === document.activeElement) {
             !button3Ref.current.disabled ? button3Ref.current.focus() :
-            !button1Ref.current.disabled ? button1Ref.current.focus() : ''
+            !button1Ref.current.disabled ? button1Ref.current.focus() :
+            button5Ref.current.disabled && button8Ref.current.disabled ? buttonRandom() : ''
           } else if (button3Ref.current === document.activeElement) {
             !button1Ref.current.disabled ? button1Ref.current.focus() :
-            !button2Ref.current.disabled ? button2Ref.current.focus() : ''
+            !button2Ref.current.disabled ? button2Ref.current.focus() :
+            button6Ref.current.disabled && button9Ref.current.disabled ? buttonRandom() : ''
           } else if (button4Ref.current === document.activeElement) {
             !button5Ref.current.disabled ? button5Ref.current.focus() :
-            !button6Ref.current.disabled ? button6Ref.current.focus() : ''
+            !button6Ref.current.disabled ? button6Ref.current.focus() :
+            button1Ref.current.disabled && button7Ref.current.disabled ? buttonRandom() : ''
           } else if (button5Ref.current === document.activeElement) {
             !button6Ref.current.disabled ? button6Ref.current.focus() :
-            !button4Ref.current.disabled ? button4Ref.current.focus() : ''
+            !button4Ref.current.disabled ? button4Ref.current.focus() :
+            button2Ref.current.disabled && button8Ref.current.disabled ? buttonRandom() : ''
           } else if (button6Ref.current === document.activeElement) {
             !button4Ref.current.disabled ? button4Ref.current.focus() :
-            !button5Ref.current.disabled ? button5Ref.current.focus() : ''
+            !button5Ref.current.disabled ? button5Ref.current.focus() :
+            button3Ref.current.disabled && button9Ref.current.disabled ? buttonRandom() : ''
           } else if (button7Ref.current === document.activeElement) {
             !button8Ref.current.disabled ? button8Ref.current.focus() :
-            !button9Ref.current.disabled ? button9Ref.current.focus() : ''
+            !button9Ref.current.disabled ? button9Ref.current.focus() :
+            button4Ref.current.disabled && button1Ref.current.disabled ? buttonRandom() : ''
           } else if (button8Ref.current === document.activeElement) {
             !button9Ref.current.disabled ? button9Ref.current.focus() :
-            !button7Ref.current.disabled ? button7Ref.current.focus() : ''
+            !button7Ref.current.disabled ? button7Ref.current.focus() :
+            button5Ref.current.disabled && button2Ref.current.disabled ? buttonRandom() : ''
           } else if (button9Ref.current === document.activeElement) {
             !button7Ref.current.disabled ? button7Ref.current.focus() :
-            !button8Ref.current.disabled ? button8Ref.current.focus() : ''
+            !button8Ref.current.disabled ? button8Ref.current.focus() :
+            button6Ref.current.disabled && button3Ref.current.disabled ? buttonRandom() : ''
           }
           break;
         case player===2?' ':'enter':
